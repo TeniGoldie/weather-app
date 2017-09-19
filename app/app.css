@@ -11,6 +11,15 @@ h1 {
 	margin: 0 0 20px 0;
 }
 
+li{
+	text-decoration: none;
+	list-style-type: none;
+}
+
+span {
+	font-size: 25px;
+}
+
 input {
 	padding: 5px 50px;
 	margin: 5px;
@@ -24,4 +33,16 @@ input {
 
 #address:focus {
   border-color: lightgrey;
+}
+
+#infowindow-content .title {
+  font-weight: bold;
+}
+
+#infowindow-content {
+  display: none;
+}
+
+#map #infowindow-content {
+  display: inline;
 }
