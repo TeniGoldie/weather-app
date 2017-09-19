@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" ng-app="weatherApp">
+	<head>
+		<meta charset="utf-8">
+		<title>My HTML File</title>
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+		<link rel="stylesheet" href="app.css" />
+
+	</head>
+
+	<body ng-controller="WeatherController">
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Weather App</h1>
+			</div>
+
+			<div class="col-md-12">
+				<input id="address" type="text" >
+				<input id="submit" type="button" value="Search">
+			</div>
+
+			<div class="col-md-12">
+				<ul>
+			    <li ng-repeat="city in cities">
+			      <p>{{city.name}}</p>
+			      <p>{{city.temperature}}</p>
+			      <p>{{city.overwiew}}</p>
+			      <hr>
+			    </li>
+			  </ul>
+			</div>
+
+			<div class="col-md-12">
+				<div id="map"></div>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_TNf-LerzWYMdKCIJ9B8me2Gry6rigsg&libraries=places" 
+	type ="text/javascript">
+	</script>
+	<script src="app.js" type ="text/javascript"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type ="text/javascript"></script>
+
+	</body>
+</html>
