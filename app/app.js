@@ -9,21 +9,33 @@ angular
 
 	function WeatherController($scope) {
 
-		$scope.cities = [
-	    {
-	      name: 'Lviv',
-	      temperature: '13 C',
-	      overwiew: 'haze'
-	    }, {
-	      name: 'Paris',
-	      temperature: '9 C',
-	      overwiew: 'sunny'
-	    }, {
-	      name: 'London',
-	      temperature: '8 C',
-	      overwiew: 'rainy'
-	    }
-  	]; 
+		var map, infoWindow, geolocate;
+
+		initMap();
+
+		function initMap() {
+		  map = new google.maps.Map(document.getElementById('map'), {
+		    zoom: 9
+		  });
+		  infoWindow = new google.maps.InfoWindow;
+
+		  if (navigator.geolocation) {
+		    navigator.geolocation.getCurrentPosition(function(position) {
+		      geolocate = {
+		        lat: position.coords.latitude,
+		        lng: position.coords.longitude
+		      };
+
+		 			infoWindow.setPosition(geolocate);
+		      infoWindow.setContent('Your location');
+		      infoWindow.open(map);
+		      map.setCenter(geolocate);          
+		  	});        
+			} else {
+			    document.getElementById('map').innerHTML = 'No Geolocation Support.';
+			}
+		};	
+
 	};
 
 })();
