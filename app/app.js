@@ -26,7 +26,12 @@ angular
          geoLat = results[0].geometry.location.lat();
          geoLng = results[0].geometry.location.lng();
 
-				weatherService.getWeather(geoLat, geoLng);
+				weatherService.getWeather(geoLat, geoLng)
+				// .success(function (response) {
+    //         console.log('success', response);
+    //     }).error(function (response) {
+    //         console.log('error', response);
+    //     });
 
         resultsMap.setCenter(results[0].geometry.location);
         marker = new google.maps.Marker({
@@ -46,11 +51,12 @@ angular
 	  infoWindow = new google.maps.InfoWindow;
 
 	  if (navigator.geolocation) {
-	    navigator.geolocation.getCurrentPosition(function(position) {
+	    navigator.geolocation.getCurrentPosition((position) => {
 	      geolocate = {
 	        lat: position.coords.latitude,
 	        lng: position.coords.longitude
 	      };
+	      console.log(geolocate.lat, geolocate.lng);
 
 	 			infoWindow.setPosition(geolocate);
 	      infoWindow.setContent('Your location');
