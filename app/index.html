@@ -16,24 +16,33 @@
         <h1>Weather App</h1>
       </div>
 
+    <div class="row">
       <div class="col-md-12"> 
         <input id="address" type="text">
         <input id="submit" type="button" value="Search" ng-click="fireWeather()">
       </div>
-
-      <div class="col-md-12">
-        <ul>
-          <li ng-repeat="phone in phones">  
-            <span>{{response.timezone}}</span>
-            <p>{{response.currently.temperature}}</p>
-            <p>{{response.currently.summary}}</p>
-          </li>
-        </ul>
+    </div>
+      <br>
+    <div class="row">
+      <div class="col-md-6">
+          <p class="city-zone">Timezone: {{defaultObject.timezone}}</p>
+          <p class="weather-info">Temperature: {{defaultObject.currently.temperature}}</p>
+          <p class="weather-info">Summary: {{defaultObject.currently.summary}}</p>
+          <hr>
       </div>
 
+      <div class="col-md-6">
+        <p class="city-zone">{{object.timezone}}</p>
+        <p class="weather-info">{{object.currently.temperature}}</p>
+        <p class="weather-info">{{object.currently.summary}}</p>
+      </div>
+    </div>
+
+    <div class="row">
       <div class="col-md-12">
         <div id="map"></div>
       </div>
+    </div>
     </div>
   </div>
 

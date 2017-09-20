@@ -13,6 +13,9 @@ angular
 		$scope.geoLat = null;
 		$scope.geoLng = null;
 
+		$scope.object;
+		$scope.defaultObject;
+
 		initMap();
 
 	$scope.fireWeather = (geoLat, geoLng) => {geocodeAddress(geocoder, map)}
@@ -26,7 +29,9 @@ angular
          geoLat = results[0].geometry.location.lat();
          geoLng = results[0].geometry.location.lng();
 
-				weatherService.getWeather(geoLat, geoLng);
+			weatherService.getWeather(geoLat, geoLng, function(response){
+				$scope.object = response;
+			});
 
         resultsMap.setCenter(results[0].geometry.location);
         marker = new google.maps.Marker({
@@ -41,7 +46,7 @@ angular
 
 	function initMap() {
 	  map = new google.maps.Map(document.getElementById('map'), {
-	    zoom: 13
+	    zoom: 10
 	  });
 	  infoWindow = new google.maps.InfoWindow;
 
@@ -51,7 +56,12 @@ angular
 	        lat: position.coords.latitude,
 	        lng: position.coords.longitude
 	      };
-	      console.log(geolocate.lat, geolocate.lng);
+				var currentLat = geolocate.lat;
+				var currentLng = geolocate.lng;
+
+	      weatherService.getCurrentWeather(currentLat, currentLng, function(response){
+	      	$scope.defaultObject = response;
+	      });
 
 	 			infoWindow.setPosition(geolocate);
 	      infoWindow.setContent('Your location');
