@@ -15,9 +15,10 @@ $ npm install
 
 2. Add this extension to the browser:
 https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en
-(it is neccesary extension to run the app from localhost to get data from another domain)
 
-3. Enable cross-origin resourse sharing on localhost.
+(Dark Sky as a security precaution has disabled cross-origin resource sharing (CORS) on their servers to help keep API secret key a secret. This extension is necessary to run the app from localhost to get data from Dark Sky server).
 
-4. Run the app. 
+3. Enable cross-origin resourse sharing.
+
+4. Run the app :  
 $ npm start.

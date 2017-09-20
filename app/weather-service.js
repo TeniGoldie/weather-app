@@ -20,7 +20,7 @@ angular
     };
 
     function getCurrentWeather(currentLat, currentLng,  successCallback) {
-      $http.get('https://api.darksky.net/forecast/bb9a05f6364a9cae22403236e78e3606/'+ currentLat + ',' +  currentLng)
+      $http.get('https://api.darksky.net/forecast/bb9a05f6364a9cae22403236e78e3606/'+ currentLat + ',' +  currentLng )
         .success((response) => {
           successCallback(response);
       }).error((result) => {
@@ -29,7 +29,7 @@ angular
     }
 
   	function getWeather (geoLat, geoLng, successCallback) {
-      $http.get('https://api.darksky.net/forecast/bb9a05f6364a9cae22403236e78e3606/'+ geoLat + ',' +  geoLng)
+      $http.get('https://api.darksky.net/forecast/bb9a05f6364a9cae22403236e78e3606/'+ geoLat + ',' +  geoLng )
        .success((response) => {
         successCallback(response);
           return response;
