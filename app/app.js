@@ -26,12 +26,7 @@ angular
          geoLat = results[0].geometry.location.lat();
          geoLng = results[0].geometry.location.lng();
 
-				weatherService.getWeather(geoLat, geoLng)
-				// .success(function (response) {
-    //         console.log('success', response);
-    //     }).error(function (response) {
-    //         console.log('error', response);
-    //     });
+				weatherService.getWeather(geoLat, geoLng);
 
         resultsMap.setCenter(results[0].geometry.location);
         marker = new google.maps.Marker({
@@ -46,7 +41,7 @@ angular
 
 	function initMap() {
 	  map = new google.maps.Map(document.getElementById('map'), {
-	    zoom: 9
+	    zoom: 13
 	  });
 	  infoWindow = new google.maps.InfoWindow;
 
@@ -65,7 +60,13 @@ angular
 	  	});        
 		} else {
 		    document.getElementById('map').innerHTML = 'No Geolocation Support.';
-		}	 	
+		}
+
+		var autocomplete = new google.maps.places.Autocomplete(document.getElementById('address'), {
+		  types: ['geocode']
+		});
+		autocomplete.bindTo('bounds', map);
+
 	};	
 
 };

@@ -17,28 +17,15 @@ angular
 
   	function getWeather (geoLat, geoLng) {
 
-      var deferred = $q.defer();
-
-      $http({
-        method: 'GET',
-        url: 'https://api.darksky.net/forecast/bb9a05f6364a9cae22403236e78e3606/'+ geoLat + ',' +  geoLng,
-        headers: {
-          'Access-Control-Allow-Headers': 'Content-Type',
-          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS' ,
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Credentials': 'true',
-        }
-      }).success((data) => {
-          deferred.resolve(data);
-          console.log('success', data);
-        })
-        .error((err) => {
-          console.log('Error retrieving markets');
-          deferred.reject(err);
-        });
-      return deferred.promise;
-
+      $http.get('https://api.darksky.net/forecast/bb9a05f6364a9cae22403236e78e3606/'+ geoLat + ',' +  geoLng)
+      .then((response) => {
+        console.log("success ", response.data.currently);
+      },(result) => {
+        console.log("Error " , result);
+      });
+      return getWeather;
 	  }
+
 
   }
 
